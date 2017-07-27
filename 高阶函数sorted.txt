@@ -1,0 +1,16 @@
+sorted()函数就可以对list进行排序,作用对象是list或者iterator
+
+>>> sorted([36,5,-12,9,-21])
+[-21, -12, 5, 9, 36]
+>>> sorted([36,5,-12,9,-21],key=abs)
+[5, 9, -12, -21, 36]
+>>> sorted(['bob','about','Zoo','Credit'])
+['Credit', 'Zoo', 'about', 'bob']
+>>> sorted(['bob','about','Zoo','Credit','aabce'])
+['Credit', 'Zoo', 'aabce', 'about', 'bob']
+>>> sorted(['bob','about','Zoo','Credit','aabce'],key=str.lower)
+['aabce', 'about', 'bob', 'Credit', 'Zoo']
+>>> sorted(['bob','about','Zoo','Credit','aabce'],key=str.upper)
+['aabce', 'about', 'bob', 'Credit', 'Zoo']
+>>> sorted(['bob','about','Zoo','Credit','aabce'],key=str.upper,reverse=True)
+['Zoo', 'Credit', 'bob', 'about', 'aabce']

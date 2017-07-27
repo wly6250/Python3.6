@@ -1,0 +1,135 @@
+如果要获得一个对象的所有属性和方法，可以使用dir()函数，它返回一个包含字符串的list
+
+>>> dir('ABC')
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '_
+_eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs
+__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__'
+, '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__',
+'__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__'
+, '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'e
+ncode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isal
+num', 'isalpha', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric',
+ 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstr
+ip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartitio
+n', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase'
+, 'title', 'translate', 'upper', 'zfill']
+
+>>> len('ABC')
+3
+# 在len()函数内部，它自动去调用该对象的__len__()方法
+>>> 'ABC'.__len__()
+3
+# 我们自己写的类，如果也想用len(myObj)的话，就自己写一个__len__()方法
+>>> class MyDog(): # Python3开始可以不写object
+...     def __len__(self):
+...         return 100
+...
+>>> dog = MyDog()
+>>> len(dog)
+100
+>>> 'ABC'.title()
+'Abc'
+>>> 'ABC'.lower()
+'abc'
+
+配合getattr()、setattr()以及hasattr()，我们可以直接操作一个对象的状态
+dir(__builtins__) ⇒ 内置函数库，包含了getattr()、setattr()以及hasattr()
+>>> class MyObject():
+...     def __init__(self):
+...         self.x = 9
+...     def power(self):
+...         return self.x * self.x
+...
+>>> obj = MyObject()
+>>> obj.power()
+81
+>>> hasattr(obj,'x')
+True
+>>> obj.x
+9
+>>> hasattr(obj,'y')
+False
+>>> setattr(obj,'y')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: setattr expected 3 arguments, got 2
+>>> setattr(obj,'y',19)
+>>> hasattr(obj,'y')
+True
+>>> getattr(obj,'y')
+19
+>>> obj.y
+19
+
+如果试图获取不存在的属性，会抛出AttributeError的错误
+>>> getattr(obj,'z')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'MyObject' object has no attribute 'z'
+
+可以传入一个default参数，如果属性不存在，就返回默认值
+>>> getattr(obj,'z',404)
+404
+
+也可以获得对象的方法:
+>>> hasattr(obj,'power') # 有属性'power'吗？
+True
+>>> getattr(obj,'power') # 获取属性'power'
+<bound method MyObject.power of <__main__.MyObject object at 0x00000000020FC9E8>
+>
+>>> obj.power # 获取属性'power'
+<bound method MyObject.power of <__main__.MyObject object at 0x00000000020FC9E8>
+>
+>>> obj.power() #调用
+81
+>>> fn = getattr(obj,'power') # 获取属性'power'并赋值到变量fn
+>>> fn # fn指向obj.power
+<bound method MyObject.power of <__main__.MyObject object at 0x00000000020FC9E8>
+>
+>>> fn() # 调用fn()与调用obj.power()是一样的
+81
+>>>
+
+注意:
+只有在不知道对象信息的时候，我们才会去获取对象信息
+如果可以直接写：
+sum = obj.x + obj.y
+就不要写：
+sum = getattr(obj, 'x') + getattr(obj, 'y')
+一个正确的用法的例子如下：
+def readImage(fp):
+    if hasattr(fp, 'read'):
+        return readData(fp)
+    return None
+--------------------------------------------------------------------------------
+>>> class MyData(object):
+...     def __init__(self):
+...         self.read = 'read'
+...     def readData(self):
+...         print('Date is reading...',self.read)
+
+>>> def readImage(fp):
+...     if hasattr(fp,'read'): #判断fp对象是否有属性'read'
+...         return fp.readData() #如果Ture,调用fp对象的类方法readData()
+...     return None
+...
+>>> a = MyData()
+>>> a.readData
+<bound method MyData.readData of <__main__.MyData object at 0x00000000020FC908>>
+>>> type(a)
+<class '__main__.MyData'>
+>>> type(MyData)
+<class 'type'>
+>>> type(MyData())
+<class '__main__.MyData'>
+>>> type(type(123))
+<class 'type'>
+>>> type(MyData)
+<class 'type'>
+>>> type(MyData) == type(type(123))
+True
+
+>>> a.readData()
+Date is reading... read
+>>> b = readImage(a)
+Date is reading... read

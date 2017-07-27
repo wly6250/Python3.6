@@ -1,0 +1,46 @@
+>>> type(123)
+<class 'int'>
+>>> type('str')
+<class 'str'>
+>>> type(None)
+<class 'NoneType'>
+>>> type(abs)
+<class 'builtin_function_or_method'>
+
+>>> from dog_cat import Dog
+>>> from dog_cat import Cat
+>>> dog = Dog()
+>>> cat = Cat()
+>>> type(cat)
+<class 'dog_cat.Cat'>
+
+>>> from animal import Animal
+>>> b = Animal()
+>>> type(b)
+<class 'animal.Animal'>
+
+>>> type(123) == type(456)
+True
+>>> type(123) == int
+True
+>>> type('abc') == type('123')
+True
+>>> type('abc') == str
+True
+>>> type('abc') == type(123)
+False
+>>> import types
+>>> def fn():
+...     pass
+...
+>>> type(fn) == types.FunctionType
+True
+>>> type(cat) == types.BuiltinFunctionType
+False
+>>> type(abs) == types.BuiltinFunctionType
+True
+>>> type(lambda x:x) == types.LambdaType
+True
+>>> type((x for x in range(10))) == types.GeneratorType
+True
+>>>

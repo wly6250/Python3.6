@@ -1,0 +1,48 @@
+>>> a=(1,2,3)
+>>> type(a)
+<class 'tuple'>   # tuple
+
+>>> b={'a':1,'b':2,'c':3}
+>>> b
+{'a': 1, 'b': 2, 'c': 3}
+>>> type(b)
+<class 'dict'>   # dict
+
+>>> c=[1,2,3]
+>>> type(c)
+<class 'list'>   # list
+
+>>> d=set(['a','b','c'])
+>>> d
+{'a', 'c', 'b'}
+>>> type(d)
+<class 'set'>   # set
+
+>>> x=1
+>>> type(x)
+<class 'int'>   # int
+
+>>> y='a'
+>>> type(y)
+<class 'str'>   # str
+
+>>> bool()
+False
+>>> bool(1)
+True
+>>> bool('a')
+True
+>>> bool(0)
+False
+>>> bool('')
+False
+>>> c= 1 is 2
+>>> c
+False
+>>> d= 1 is 1
+>>> d
+True
+>>> type(d)
+<class 'bool'>   # bool
+>>> issubclass(bool,int) #bool¥ˆê˜¢subclass int
+True

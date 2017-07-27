@@ -1,0 +1,74 @@
+>>> d={'a':1,'b':2,'c':3}
+>>> d
+{'a': 1, 'b': 2, 'c': 3}
+>>> for key in d:
+...     print(key)
+...
+a
+b
+c
+>>> for key in d:
+...     print(key)
+...
+a
+c
+b
+>>> for value in d.values():
+...     print(value)
+...
+1
+2
+3
+>>> for k,v in d.items():
+...     print(k+'=',v)
+...
+a= 1
+b= 2
+c= 3
+>>> for ch in'ABCDEFGH':
+...     print(ch)
+...
+A
+B
+C
+D
+E
+F
+G
+H
+# 如何判断一个对象是可迭代对象呢？方法是通过collections模块的Iterable类型判断：
+>>> from collections import Iterable
+>>> isinstance('abcd',Iterable)
+True
+>>> isinstance(['a','b','c'],Iterable)
+True
+>>> isinstance(12345,Iterable)
+False
+>>> for i,v in enumerate(['A','B','C']):
+...     print(i,v)
+...
+0 A
+1 B
+2 C
+>>> for x,y in [(1,1),(2,4),(3,9)]:
+...     print(x,y)
+...
+1 1
+2 4
+3 9
+>>> d
+{'a': 1, 'b': 2, 'c': 3}
+>>> d.items()
+dict_items([('a', 1), ('b', 2), ('c', 3)])
+>>> for k,v in enumerate(d.items()):
+...     print(k,v)
+...
+0 ('a', 1)
+1 ('b', 2)
+2 ('c', 3)
+>>> for i,(k,v) in enumerate(d.items()):
+...     print(i,k,v)
+...
+0 a 1
+1 b 2
+2 c 3

@@ -1,0 +1,142 @@
+>>> classlist=['aaaaa','bbbbb','ccccccc']
+>>> classlist
+['aaaaa', 'bbbbb', 'ccccccc']
+>>> len(classlist)
+3
+>>> classlist[0]
+'aaaaa'
+>>> classlist[1]
+'bbbbb'
+>>> classlist[2]
+'ccccccc'
+>>> classlist[3]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: list index out of range
+>>> len(classlist)-1
+2
+>>> classlist[-1]
+'ccccccc'
+>>> classlist[-2]
+'bbbbb'
+>>> classlist[-3]
+'aaaaa'
+>>> classlist[-4]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: list index out of range
+>>> classlist.append('ddd')
+>>> classlist
+['aaaaa', 'bbbbb', 'ccccccc', 'ddd']
+>>> classlist.insert(1,'iiii')
+>>> classlist
+['aaaaa', 'iiii', 'bbbbb', 'ccccccc', 'ddd']
+>>> len(classlist)
+5
+>>> classlist.pop()
+'ddd'
+>>> classlist
+['aaaaa', 'iiii', 'bbbbb', 'ccccccc']
+>>> classlist.pop(1)
+'iiii'
+>>> classlist
+['aaaaa', 'bbbbb', 'ccccccc']
+>>> classlist[1]='xxxxxx'
+>>> classlist
+['aaaaa', 'xxxxxx', 'ccccccc']
+>>> list1=['apple',123,true]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'true' is not defined
+>>> list1=['apple',123,True]
+>>> list1
+['apple', 123, True]
+>>> list2=['marvin',1234,['aaaa','bbbbb'],False,'ccccccc']
+>>> list2
+['marvin', 1234, ['aaaa', 'bbbbb'], False, 'ccccccc']
+>>> len(list2)
+5
+>>> list2[2]
+['aaaa', 'bbbbb']
+>>> list3=['asp','php']
+>>> list4=['aaaaa',12345,list3,True]
+>>> list4
+['aaaaa', 12345, ['asp', 'php'], True]
+>>> list3
+['asp', 'php']
+>>> list3[1]
+'php'
+>>> list4[2]
+['asp', 'php']
+>>> list4[2][1]
+'php'
+>>> list5=[]
+>>> list5
+[]
+>>> len(list5)
+0
+-----------------------------------------------------------------
+>>> classtuple=('aaaaa','bbbbb','ccccc')
+>>> classtuple
+('aaaaa', 'bbbbb', 'ccccc')
+>>> t=()
+>>> t
+()
+>>> t=(1)
+>>> t
+1
+>>> t=(1,)
+>>> t
+(1,)
+>>> t=('a','b',['A','B'])
+>>> t
+('a', 'b', ['A', 'B'])
+>>> t(2)[1]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object is not callable
+>>> t[2][1]
+'B'
+>>> t[2][0] ='x'
+>>> t[2][1]='y'
+>>> t[2]
+['x', 'y']
+>>> t
+('a', 'b', ['x', 'y'])
+>>>
+
+#数值的调用是通过在内存中划分出一个叫栈的东西, 每次使用的时候都会被存入栈中,使用完毕后就会被销毁.
+#而列表类型的对象是直接在内存中开辟一快空间, 不会在使用后被销毁.
+
+>>> L1=[1,2,3]
+>>> L2=L1
+>>> L2
+[1, 2, 3]
+>>> L1[2]=1
+>>> L1
+[1, 2, 1]
+>>> L2
+[1, 2, 1]
+
+函数id()，
+This is the address of the object in memory for this object during its lifetime
+
+python 对象包含三要素：id，type，value:
+id是用来唯一标识一个对象(内存地址)，
+type标识对象的数据类型，
+value是对象的值，内存地址所指向的内容，
+is判断的是a对象是否就是b对象，是通过id来判断的.
+
+x = 1
+y = x
+z = 1
+print('数值 x 的 id = ',id(x))
+print('数值 y 的 id = ',id(y))
+print('数值 z 的 id = ',id(z))
+
+a = [1]
+b = a
+c = [1]
+print('列表 a 的 id = ',id(a))
+print('列表 b 的 id = ',id(b))
+print('列表 c 的 id = ',id(c))

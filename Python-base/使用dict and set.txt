@@ -1,0 +1,159 @@
+>>> d={'Michael':95,'Bob':75,'Tracy':85}
+>>> d
+{'Michael': 95, 'Bob': 75, 'Tracy': 85}
+>>> d[0]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 0
+>>> d[1]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 1
+>>> d['Michael']
+95
+>>> d['Adam']=67
+>>> d
+{'Michael': 95, 'Bob': 75, 'Tracy': 85, 'Adam': 67}
+>>> d['Bob']=90
+>>> d
+{'Michael': 95, 'Bob': 90, 'Tracy': 85, 'Adam': 67}
+>>> d['Thomas']
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'Thomas'
+>>> 'Thomas' in d
+False
+>>> 'Adam' in d
+True
+>>> d.get('Thomas')
+>>> d.get('Thomas',na)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'na' is not defined
+>>> d.get('Thomas','NA')
+'NA'
+>>> d.get('Thomas',-1)
+-1
+>>> d.get('Tracy')
+85
+>>> d
+{'Michael': 95, 'Bob': 90, 'Tracy': 85, 'Adam': 67}
+>>> d.pop('Bob')
+90
+>>> d
+{'Michael': 95, 'Tracy': 85, 'Adam': 67}
+>>> key =[1,2,3]
+>>> d[key]='a list'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+>>> key
+[1, 2, 3]
+>>> d
+{'Michael': 95, 'Tracy': 85, 'Adam': 67}
+>>> s=set([1,2,3])
+>>> s
+{1, 2, 3}
+>>> s=set([1,2,2,3,3,3])
+>>> s
+{1, 2, 3}
+>>> s.add(4)
+>>> s
+{1, 2, 3, 4}
+>>> s.add(4)
+>>> s
+{1, 2, 3, 4}
+>>> s.add(5)
+>>> s
+{1, 2, 3, 4, 5}
+>>> s.remove(4)
+>>> s
+{1, 2, 3, 5}
+>>> s.remove(4)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 4
+>>> s1=set([a,b,c])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'a' is not defined
+>>> s1=set(['a','b','c'])
+>>> s2=set([1,2,3,4])
+>>> s1&s2
+set()
+>>> s3=set([1,2,'a'])
+>>> s1&s3
+{'a'}
+>>> s2&s3
+{1, 2}
+>>> s2|s3
+{1, 2, 3, 4, 'a'}
+>>> s1|s2
+{1, 2, 3, 'a', 4, 'c', 'b'}
+>>> a=s1|s2
+>>> a
+{1, 2, 3, 'a', 4, 'c', 'b'}
+>>> a.add('A')
+>>> a
+{1, 2, 3, 'a', 4, 'c', 'A', 'b'}
+>>> a.add(['x','y'])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+--------------------------------------------------------------------
+>>> a=['c','b','a']
+>>> a.sort()
+>>> a
+['a', 'b', 'c']
+>>> b='abc'
+>>> b.replace('a','A')
+'Abc'
+>>> b
+'abc'
+>>> c=b.replace('a','A')
+>>> c
+'Abc'
+>>> b
+'abc'
+>>> b=b.replace('a','A')
+>>> b
+'Abc'
+>>> t=(1,2,3)
+>>> d={'thomas':90,t:70,'bbbbb':80}
+>>> d
+{'thomas': 90, (1, 2, 3): 70, 'bbbbb': 80}
+>>> t1=(1,2,[3,4,5])
+>>> d1={'thomas':90,t1:70,'bbbbb':80}
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+>>> d2={'aaa':100,[1,2,3]:80,3:60}
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+>>> d3={'aaa':100,'bbb':70,3:60}
+>>> d3
+{'aaa': 100, 'bbb': 70, 3: 60}
+>>> x=set((1,2,3))
+>>> x
+{1, 2, 3}
+>>> x=set([1,2,3])
+>>> x
+{1, 2, 3}
+>>> y=set((1,2,3,[4,5]))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+>>> y=set((1,2,3,[4,]))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+>>> y=set((1,2,3,(4,5)))
+>>> y
+{(4, 5), 1, 2, 3}
+>>> a=123
+>>> b=('stu:a',33)
+>>> c={b:a,'vvv':60}
+>>> c
+{('stu:a', 33): 123, 'vvv': 60}
+>>>

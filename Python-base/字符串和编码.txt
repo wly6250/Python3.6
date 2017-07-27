@@ -1,0 +1,44 @@
+>>> ord('a')
+97
+>>> ord('A')
+65
+>>> chr(66)
+'B'
+>>> chr(98)
+'b'
+>>> chr(20013)
+'’†'
+>>> str('’†•¶')
+'’†•¶'
+>>> ord('’†')
+20013
+>>> ord('•¶')
+25991
+>>> str('\u4e2d\u6587')
+'’†•¶'
+>>> 'ABC'.encode('ascii')
+b'ABC'
+>>> '’†•¶'.encode('utf-8')
+b'\xe4\xb8\xad\xe6\x96\x87'
+>>> '’†•¶'.encode('shift-jis')
+b'\x92\x86\x95\xb6'
+>>> '’†•¶'.encode('gb2312')
+b'\xd6\xd0\xce\xc4'
+>>> b'abc'.decode('ascii')
+'abc'
+>>> '’†•¶'.encode('utf-8')
+b'\xe4\xb8\xad\xe6\x96\x87'
+>>> b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8')
+'’†•¶'
+>>> '’†•¶'.encode('gb2312')
+b'\xd6\xd0\xce\xc4'
+>>> b'\xd6\xd0\xce\xc4'.decode('gb2312')
+'’†•¶'
+>>> len('ABC')
+3
+>>> '’†•¶'.encode('utf-8')
+b'\xe4\xb8\xad\xe6\x96\x87'
+>>> len(b'\xe4\xb8\xad\xe6\x96\x87')
+6
+>>> len('’†•¶'.encode('utf-8'))
+6

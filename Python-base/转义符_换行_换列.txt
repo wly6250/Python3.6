@@ -1,0 +1,41 @@
+>>> print('i\'m \"ok\"!')
+i'm "ok"!
+>>> print('i\'m \"ok\"!')
+i'm "ok"!
+>>> print('i\'m learning\npython.')
+i'm learning
+python.
+>>> print('\\\n\\')
+\
+\
+>>> print('\\\t\\')
+\       \
+>>> print('\\\t\\\t\\')
+\       \       \
+>>> print('\\\t\\\t\\\t\\')
+\       \       \       \
+>>> print(r'\\\t\\\t\\\t\\')
+\\\t\\\t\\\t\\
+>>> print('''line1
+... line2
+... line3
+... line4''')
+line1
+line2
+line3
+line4
+>>> print('''aaaa
+... bbbb
+... cccc''')
+aaaa
+bbbb
+cccc
+>>> print(r'''aaaa
+... bbbb
+... cccc
+... dddd''')
+aaaa
+bbbb
+cccc
+dddd
+>>>
